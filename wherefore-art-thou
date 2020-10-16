@@ -1,0 +1,24 @@
+function whatIsInAName(collection, source) {
+  var arr = [];
+  // Only change code below this line
+  let sourceProps = Object.keys(source);
+  let sourceValues = Object.values(source);
+
+  for(let j = 0; j < collection.length; j++) {
+    let incrementor = 0;
+    for(let i = 0; i < sourceProps.length; i++) {
+      if(collection[j][sourceProps[i]] == sourceValues[i]) {
+        incrementor++;
+      };
+      if(incrementor == sourceProps.length) {
+        arr.push(collection[j]);
+      }
+    }
+  }
+
+  // Only change code above this line
+  return arr;
+}
+
+
+whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 })
