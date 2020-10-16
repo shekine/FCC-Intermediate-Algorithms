@@ -1,0 +1,17 @@
+function spinalCase(str) {
+  // regex splits string anywhere there is a space, underscore, or Uppercase letter following.
+  let splitArr = str.split(/(\s|_|(?=[A-Z]))/g);
+  // Remove empty strings and strings containing only a space from splitArr
+  let newStr = splitArr.filter(item => item !== "" && item !== " " && item !== "_");
+  // Finally - joins all of the elements in newStr array with a hyphen and lowercases all
+  return newStr.join("-").toLowerCase();
+}
+
+console.log(spinalCase('This Is Spinal Tap'));
+console.log(spinalCase('thisIsSpinalTap'));
+console.log(spinalCase('TheAndyGriffith_Show'));
+console.log(spinalCase('Teletubbies say Eh-oh'));
+console.log(spinalCase('AllThe-small Things'));
+
+// Upon viewing the solutions, I could have shortened the code a bit by removing the capture over my whole Regex and the global tag. This would have allowed me to
+// completely skip the filtering step 
