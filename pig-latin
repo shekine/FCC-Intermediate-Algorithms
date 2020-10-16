@@ -1,0 +1,22 @@
+function translatePigLatin(str) {
+  let regex1 = /(^[^aeiou]*)([aeiou])(\w*)/;
+  let regex2 = /^[aeiou]/;
+  let regex3 = /^[^aeiou]+$/;
+  if (!regex2.test(str)) {
+    if(regex3.test(str)) {
+      return str.concat('ay');
+    } else {
+      return str.replace(regex1, '$2$3$1ay');
+    }
+  } else if(regex2.test(str)) {
+    return str.replace(regex1, '$2$3way');
+  }
+}
+
+console.log(translatePigLatin("consonant"));
+console.log(translatePigLatin("paragraphs"));
+console.log(translatePigLatin("glove"));
+console.log(translatePigLatin("algorithm"));
+console.log(translatePigLatin("eight"));
+console.log(translatePigLatin("schwartz"));
+console.log(translatePigLatin("rhythm"));
