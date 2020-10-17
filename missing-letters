@@ -1,0 +1,18 @@
+function fearNotLetter(str) {
+  let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  let strArr = str.split('');
+  let focusedAlpha = alphabet.slice(alphabet.indexOf(strArr[0])/* , strArr.length + alphabet.indexOf(strArr[0]*/);
+  console.log(alphabet.indexOf(strArr[0]));
+  console.log(focusedAlpha);
+  console.log(strArr);
+  return focusedAlpha.filter((item, index) => item != strArr[index]).shift();
+}
+
+console.log(fearNotLetter("bcdf"));
+
+
+// commented out the second parameter of the slice method on line 4 because it isn't necessary for the code to run
+// I left it in there as a reminder that while it takes up extra space on my end, it causes the computer to do more 
+// work in the background. Instead of slicing the exact portion of the array needed, leaving out the second parameter 
+// causes focusedAlpha to carry over every letter from the index of strArr[0] on. Not a big deal with 26 letters, but 
+// not really a scalable idea.
