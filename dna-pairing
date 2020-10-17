@@ -1,0 +1,24 @@
+function pairElement(str) {
+  let totalArr = [];
+  let newArr = str.split('');
+  newArr.map(item => {
+    if(item == "G") {
+      totalArr.push([item, "C"]);
+    } else if (item == "C") {
+      totalArr.push([item, "G"]);
+    } else if (item == "A") {
+      totalArr.push([item, "T"]);
+    } else {
+      totalArr.push([item, "A"]);
+    }
+  })
+  return totalArr;
+}
+
+pairElement("ATCGA");
+
+// The point was made in the solutions that a switch case might be more elegant and less wordy. 
+// I agree, but this was the first way I did it. I usually only pull out the switch case when
+// I have five or more cases. The most elegant by far was creating an object with properties named
+// for each base. Then the string is split and it's corresponding array mapped over using the object 
+// to fill in the missing pair. Very elegant. Wish I'd have thought of it. :p
