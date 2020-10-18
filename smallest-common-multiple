@@ -1,4 +1,37 @@
-// INCOMPLETE
+function smallestCommons(arr) {
+  arr.sort((a,b) => a - b);
+
+  function range(arr) {
+    let newArr = [];
+    for(let i = arr[0]; i <= arr[1]; i++) {
+      newArr.push(i);
+    }
+    return newArr;
+  }
+
+  function gcd(a,b) {
+    return !b ? a: gcd(b, a % b);
+  }
+
+  function lcm(a,b) {
+    return Math.abs(a*b) / gcd(a,b);
+  }
+
+  let smallestMultiple = arr[0];
+  range(arr).forEach(num => {
+    smallestMultiple = lcm(smallestMultiple, num);
+    return smallestMultiple;
+  })
+
+  return smallestMultiple;
+}
+
+console.log(smallestCommons([1,5]));
+console.log(smallestCommons([2,10]));
+console.log(smallestCommons([1,13]));
+console.log(smallestCommons([18,23]));
+
+// INCOMPLETE - everything below ended up scrapped. Refer to above code. Had to get help.
 
 function smallestCommons(arr) {
   let primeFactors = []
