@@ -1,0 +1,12 @@
+function sumFibs(num) {
+  let fibArr = [1, 1];
+  let i = 0; //incrementor
+  let sum = 0;
+  do {
+    fibArr.push(fibArr[i] + fibArr[i + 1]);
+    i++;
+  } while (fibArr[i] + fibArr[i+1] < num + 1);
+  return fibArr.filter(item => item % 2 == 1).reduce((a,b) => a + b, 0);
+}
+
+console.log(sumFibs(75024));
