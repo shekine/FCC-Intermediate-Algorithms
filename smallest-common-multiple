@@ -1,0 +1,54 @@
+// INCOMPLETE
+
+function smallestCommons(arr) {
+  let primeFactors = []
+  arr.sort((a,b) => a - b);
+  for(let i = arr[0]; i <= arr[1]; i++) {
+    if(isPrime(i)) {
+      primeFactors.push(i);
+    } /*else if(Math.sqrt(i) * Math.sqrt(i) !== i && isPrime(i/Math.sqrt(i))) {
+      // do nothing
+    }*/ else {
+      for(let j = 2; j < i; j++) {
+        if(isPrime(j) && i % j === 0) {
+          primeFactors.push(j);
+        }
+      }
+    }
+  }
+  // let primeFactorsA = [];
+  // if(isPrime(arr[0])) {
+  //   primeFactorsA.push(arr[0]);
+  // } else {
+  //   for(let i = 2; i < arr[0]; i++) {
+  //   if(isPrime(i) && arr[0] % i === 0) {
+  //     primeFactorsA.push(i);
+  //   }
+  // }
+  // }
+  // let primeFactorsB = [];
+  // if(isPrime(arr[1])) {
+  //   primeFactorsB.push(arr[1]);
+  // } else {
+  //   for(let i = 2; i < arr[1]; i++) {
+  //   if(isPrime(i) && arr[1] % i === 0) {
+  //     primeFactorsB.push(i);
+  //   }
+  // }
+  // }
+
+  return primeFactors.reduce((a,b) => a * b);
+}
+
+function isPrime(num) {
+  for(let i = 2; i < num; i++) {
+    if(num % i === 0) return false;
+  }
+  return num !== 1 && num !== 0;
+}
+
+
+console.log(smallestCommons([1,5]));
+console.log(smallestCommons([2,10]));
+console.log(smallestCommons([1,13]));
+console.log(smallestCommons([18,23]));
