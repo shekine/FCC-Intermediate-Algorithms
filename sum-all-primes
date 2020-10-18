@@ -1,0 +1,24 @@
+function sumPrimes(num) {
+  let sieve = [], i, j, primes = [];
+
+  // Stack Overflow prime sieve. Could not seem to manage to make my own sadly. Don't want to spend days on this one.
+  for(i = 2; i <= num; ++i) {
+    if(!sieve[i]) {
+      primes.push(i);
+      // i << 1 is a bitwise operator. it shifts a bit left. so 0010 would become 0100. So it essentially multiplies by two. It is confusing to me and I am leaving it in specifically to get more used to it.
+      for(j = i << 1; j <= num; j += i) {
+        sieve[j] = true;
+      }
+    }
+  }
+
+  return primes.reduce((a,b) => a + b, 0);
+}
+
+console.log(sumPrimes(977));
+
+
+// Had to get a little help writing a function that returns all primes. Hurts my pride a bit, but necessary. This utilizes a method called the Sieve of Eratosthenes. Essentially
+// it filters out any multiples of primes and what remains are the prime numbers. Example: multiples of 2 are out, multiples of 3, multiples of 5, multiples of 7 etc. It is 
+// supposed to be O(nloglogn) time complexity which is better than trial division at O(n^2) which was my first thought process even though at the time I did not know that method
+// had a name. Definitely a brainbender problem for me.
