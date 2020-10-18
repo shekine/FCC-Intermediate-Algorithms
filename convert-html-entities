@@ -1,0 +1,49 @@
+function convertHTML(str) {
+  // Find indices of special characters
+  let ampIndex = str.indexOf('&');
+  let leftIndex = str.indexOf('<');
+  let rightIndex = str.indexOf('>');
+  let quoteIndex = str.indexOf('"');
+  let aposIndex = str.indexOf("'");
+
+  // Move all but ampersand to array
+  let indices = [leftIndex, rightIndex, quoteIndex, aposIndex];
+
+  // Function to handle ampersand
+  // Regex targets ampersand, but not within HTML entities
+  let regex = /&[^&\w*]/;
+  if(regex.test(str)) {
+    let newStr = str.replace('&', '&amp;');
+    return convertHTML(newStr);
+  }
+
+  // Set up recursive function. Default case runs when no special character is found in string
+  if(indices.filter(item => item !== -1).length == 0) {
+    return str;
+  } else {
+    let focus = indices.filter(item => item > -1);
+    let newStr;
+    // Switch statement replaces character and calls function recursively to handle cases with more than one occurence.
+    switch (str.charAt(focus[0])) {
+      case '<': 
+        newStr = str.replace('<', '&lt;');
+        break;
+      case '>': 
+        newStr = str.replace('>', '&gt;');
+        break;
+      case '"': 
+        newStr = str.replace('"', '&quot;');
+        break;
+      case "'": 
+        newStr = str.replace("'", '&apos;');
+        break;
+     }
+    return convertHTML(newStr);
+  }
+
+}
+
+console.log(convertHTML("Hamburgers & Pizza < Tacos"));
+
+// Definitely a convoluted function that I wrote, but I was proud because I came up with it entirely on my own AND it uses recursion as a solution 
+// which is rarely a go to solution for me. It could be simplified a good deal after having viewed the solutions, but I think I will keep mine :)
