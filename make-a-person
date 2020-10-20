@@ -1,0 +1,46 @@
+var Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  this.getFullName = function() {
+    return firstAndLast;
+  };
+  this.getFirstName = function() {
+    return firstAndLast.split(' ')[0];
+  };
+  this.getLastName = function() {
+    return firstAndLast.split(' ')[1];
+  };
+  this.setFirstName = function(firstName) {
+    if(typeof firstName === 'string') {
+      let newName = firstAndLast.split(' ').slice(1,2);
+      newName.unshift(firstName);
+      firstAndLast = newName.join(' ');
+      return firstAndLast;
+    } else {
+      return "New name must be a string.";
+    }
+  }
+  this.setLastName = function(lastName) {
+    if(typeof lastName === 'string') {
+      let newName = firstAndLast.split(' ').slice(0,1);
+      newName.push(lastName);
+      firstAndLast = newName.join(' ');
+      return firstAndLast;
+    } else {
+      return "New name must be a string.";
+    }
+  }
+  this.setFullName = function(fullName) {
+    if(typeof fullName === 'string') {
+      firstAndLast = fullName;
+      return firstAndLast;
+    } else {
+      return "New name must be a string.";
+    }
+  }
+  return firstAndLast;
+};
+
+var bob = new Person('Bob Ross');
+bob.setFirstName('Haskell');
+console.log(bob.getFullName());
