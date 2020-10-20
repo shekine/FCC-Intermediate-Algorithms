@@ -1,0 +1,14 @@
+function truthCheck(collection, pre) {
+
+  function allHaveProp(item) {
+    return item.hasOwnProperty(pre);
+  }
+
+  function propTruthy(item) {
+    return Boolean(item[pre]);
+  }
+
+  return collection.every(allHaveProp) && collection.every(propTruthy);
+}
+
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
