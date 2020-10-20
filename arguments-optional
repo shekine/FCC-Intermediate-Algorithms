@@ -1,0 +1,21 @@
+function addTogether(x, y) {
+  console.log(typeof y);
+  if(typeof x !== 'number') {
+    return undefined;
+  } else if(!y) {
+    return function(y) {
+      if(typeof y === 'number') {
+        return x + y;
+      } else {
+        return undefined;
+      }
+    } 
+  } else if(typeof y !== 'number' && typeof y !== undefined) {
+    return undefined;
+  } else {
+    console.log(typeof y);
+    return x + y;
+  }
+}
+
+console.log(addTogether(4)([3]));
